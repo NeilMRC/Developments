@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include 'bootstrap.html' %}
+</head>
+<body>
+{% include 'nav.html' %}
+
+
+<div class="container text-center">
+<h4>Resolve for variable {{var1}}</h4>
+Equation: {{eq1}} = 0
+<h4>Solution:</h4>
+<div class="border rounded">
+{% for l in res %}  
+x = {{l}}<br>
+{%endfor%}
+</div>
+</div>
+
+
+</body>
+</html>
