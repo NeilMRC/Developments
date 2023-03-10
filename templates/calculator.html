@@ -9,23 +9,33 @@
 <div class="container">
 <h1 class="text-center mt-2 mb-4">Algebra Calculators</h1>
     
-  <dl>
-    <dt>HTML</dt>
-    <dd>Abbreviation for HyperText Markup Language - a language used to make web pages.</dd>
-
-    <dt>Dog</dt>
-    <dd>Any carnivorous animal belonging to the family Canidae.</dd>
-    <dd>The domesticated sub-species of the family Canidae, Canis lupus familiaris.</dd>
-
-</dl>
+ <div class="row">
+        <div class="col-md-4">
+            <h2 class="text-center mt-2 mb-4">Resolve for "x"</h2>
+            <p>Insert an equation on variable "x" using the Python nomemclature (Eg. x^2 as x**2). It uses the sympy library to find the roots of f(x) = 0. </p>
+            
+         
+        </div>
+        <div class="col-md-4">
+            <h2 class="text-center mt-2 mb-4">Derivatives</h2>
+            <p>Sympy can compute derivatives. Introduce an equation of x below (Eg.x**2*exp(x)) </p>
+            
+        </div>
+        <div class="col-md-4">
+            <h2 class="text-center mt-2 mb-4">Integration</h2>
+            <p>With Sympy you can compute integrals. Introduce an equation below</p>
+            
+        </div>
+    </div>
+    <div class="text-center mt-2 mb-4">
+      {% include 'calculator_form.html' %}
+    </div>
+   
 </div>
 <div class="container">
-<button onclick="toggle_button()">Toggle</button>
-<a class="btn btn-primary" href="#" role="button">Link</a>
-<button class="btn btn-primary" type="submit" value="toggle" formaction="/foo" formmethod="post">Button</button>
 
 {% if method =='GET' %}
-  {% include 'calculator_form.html' %}
+  
 {% endif %}
 </div>
 

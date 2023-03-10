@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from sympy import *
-from math1 import solveforx
+from math1 import solveforx, derivative, integration
 
 app = Flask(__name__)
 Company="NMRC"
@@ -33,25 +33,25 @@ def calculator():
 
 @app.route('/calculator/<int:id>',methods=['post'])
 def calculator_result(id):
-  #rawdata=request.get_data()
-  #data = request.form.to_dict(flat=False)
+  # Get the data from the form
   eq1 = request.form.get('eq1')
   var1 = request.form.get('var')
-  result = solveforx(eq1)
-  print("Result:",result,"type of result:",type(result))
-  # print("inside /calculator/{}".format(id))
-  # print("raw data:",rawdata)
-  # print("data from form:",data)
-  # print("recovered data:{}".format(x))
-  # for key in data:
-  #     print("key:", key,", value:", data[key])
-  #     print("type of key",type(key),", type of value:",type(data[key]))
-  #eq_int=data['eq1']
-  #print("Equation: ",eq_int)
-  return render_template("resolve.html",eq1=eq1,var1=var1,res=result)
-  
+  if id==1:
+    eq1 = request.form.get('eq1')
+    var1 = request.form.get('var')
+    result = solveforx(eq1)
+    print("Result:",result,"type of result:",type(result))
 
-@app.route('/foo', methods=['post']) 
+    return render_template("resolve.html", eq1 = eq1, var1 = var1, res = result, id = id)
+  elif id == 2:
+    result = derivative(eq1)
+    return render_template("resolve.html", eq1 = eq1, var1 = var1, res = result, id = id)
+    
+  elif id == 3:
+    result = integration(eq1)
+    return render_template("resolve.html", eq1 = eq1, var1 = var1, res = result, id = id)
+    
+@app.route('/foo', methods=['post','get']) 
 def foo():
     data = request.json
     return jsonify(data)
